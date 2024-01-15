@@ -98,7 +98,7 @@ class TextSplitDataset(DatasetTemplate):
         the images in the split
         """
         super().__init__(img_dir, label_dir, transform)
-        self.img_names = np.loadtxt(split_txt, dtype=str, delimiter='\n', ndmin=1, universal_newlines=True)
+        self.img_names = np.loadtxt(split_txt, dtype=str, delimiter='\r\n', ndmin=1)
 
 
 class FolderDataset(DatasetTemplate):
