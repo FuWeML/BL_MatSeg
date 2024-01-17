@@ -5,7 +5,8 @@ from os.path import splitext
 import torch
 import random
 import numpy as np
-
+from google.colab import drive
+drive.mount('/content/drive')
 
 class Arguments:
     def __init__(self):
@@ -56,7 +57,9 @@ class Arguments:
 
     @staticmethod
     def update_checkpoints_dir(args, checkpoints_dir):
-        args.checkpoints_dir = checkpoints_dir
+        drive_path = '/content/drive/MyDrive/Marie/MatSeg-master/predictions'
+        args.checkpoints_dir = os.path.join(drive_path, checkpoints_dir)
+        #args.checkpoints_dir = checkpoints_dir
         os.makedirs(args.checkpoints_dir, exist_ok=True)
         args.model_path = f"{args.checkpoints_dir}/model.pth"
         args.record_path = f"{args.checkpoints_dir}/train_record.csv"
